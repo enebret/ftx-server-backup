@@ -1,6 +1,9 @@
 const express = require ('express');
 const userRouter = express.Router();
-userRouter.use(express.json())
+const database = require ('../DbConnect.js');
+const User = require('../models/userModel.js')
+userRouter.use(express.json());
+database();
 userRouter.get('/', (req, res)=>{
     res.send('this is meant to be the home page')
 })
@@ -11,8 +14,14 @@ userRouter.get('/login', (req, res)=>{
 })
 
 userRouter.post('/signup', (req, res)=>{
-    console.log(req.body)
-    res.send('user is redirected to dashboard')
+    
+    User.create(req.body)
+    .then(()=>{
+        res.json({msg:'new user added successfully'});
+        console.log('new user has been added to the atlas database')
+    })
+    .catch(error=>console.log(error))
+    //res.send('user is redirected to dashboard')
 })
 
 userRouter.post('/signin', (req, res)=>{

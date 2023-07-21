@@ -17,12 +17,12 @@ const getAPI = async () => {
         phone: '+2348130135975',
         password: '0090448869'
       });
-      console.log(response.data)
+      console.log(response.data.msg)
     } catch (error) {
       console.log(console.error())
     }
   };
-  //postAPISignUp();
+  postAPISignUp();
   
   const postAPISignIn = async ()=> {
     try {
@@ -30,10 +30,10 @@ const getAPI = async () => {
         email: 'awsumbret@gmail.com',
         password: '+2348130135975'
       });
-      console.log(response.data)
+      console.log(response.data.msg)
     } catch (error) {
       console.log(console.error())
     }
   };
 
-postAPISignIn()
+//postAPISignIn()
