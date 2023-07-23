@@ -25,8 +25,23 @@ userRouter.post('/signup', (req, res)=>{
 })
 
 userRouter.post('/signin', (req, res)=>{
-    console.log(req.body);
-    res.send('user is signed-in')
+    var userEmail = req.body.email;
+    var userPassword = req.body.password;
+    User.findOne({email:userEmail})
+    .then(user=>{
+        if(user) {
+            //res.send('existing user found');
+            if(user.password==userPassword){
+                res.send('user password has been verified, take them to the dashboard');
+                console.log('user is signed-in')
+            } else {
+                res.send ('incorrect user password, try again')
+            }
+        } else {
+            res.send('not a registered user')
+        }
+    })
+   
 })
 
 module.exports = userRouter;

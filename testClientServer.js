@@ -22,18 +22,18 @@ const getAPI = async () => {
       console.log(console.error())
     }
   };
-  postAPISignUp();
+  //postAPISignUp();
   
   const postAPISignIn = async ()=> {
     try {
       let response = await axios.post('http://localhost:5045/user/signin',  {
         email: 'awsumbret@gmail.com',
-        password: '+2348130135975'
+        password: '0090448869'
       });
-      console.log(response.data.msg)
+      console.log(response.data)
     } catch (error) {
       console.log(console.error())
     }
   };
 
-//postAPISignIn()
+postAPISignIn()
