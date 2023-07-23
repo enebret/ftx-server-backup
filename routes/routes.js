@@ -14,12 +14,22 @@ userRouter.get('/login', (req, res)=>{
 })
 
 userRouter.post('/signup', (req, res)=>{
-    
-    User.create(req.body)
-    .then(()=>{
-        res.json({msg:'new user added successfully'});
-        console.log('new user has been added to the atlas database')
+    var userDetails = req.body;
+    var userEmail = req.body.email;
+    User.findOne({email:userEmail})
+    .then(user=>{
+        if(user){
+            res.send('this email is an existing user email or you are already a registered user.Kindly enter your email and password to login into your dashboard')
+        } else {
+            User.create(userDetails)
+            .then(()=>{
+                res.json({msg:'new user added successfully'});
+                console.log('new user has been added to the atlas database')
+            })
+        }
     })
+    
+    
     .catch(error=>console.log(error))
     //res.send('user is redirected to dashboard')
 })
