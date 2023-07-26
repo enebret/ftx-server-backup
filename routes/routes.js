@@ -23,7 +23,7 @@ userRouter.post('/signup', (req, res)=>{
         } else {
             User.create(userDetails)
             .then(()=>{
-                res.json({msg:'new user added successfully'});
+                res.json(userDetails);
                 console.log('new user has been added to the atlas database')
             })
         }
@@ -40,10 +40,11 @@ userRouter.post('/signin', (req, res)=>{
     User.findOne({email:userEmail})
     .then(user=>{
         if(user) {
+            var userData = user;
             //res.send('existing user found');
             if(user.password==userPassword){
-                res.send('user password has been verified, take them to the dashboard');
-                console.log('user is signed-in')
+                res.json(userData);
+                console.log(userData)
             } else {
                 res.send ('incorrect user password, try again')
             }
