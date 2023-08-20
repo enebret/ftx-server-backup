@@ -5,6 +5,7 @@ const output = fs.createWriteStream('./stdout.log');
 const errorOutput = fs.createWriteStream('./stderr.log');
 const logger = new Console(output, errorOutput);
 const url = "https://api.coingecko.com/api/v3/coins/"
+//
 async function getCoin () {
     try {
         const btcReturnedPrice = await axios.get(url+"solana?tickers=true");

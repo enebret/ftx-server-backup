@@ -32,6 +32,7 @@ userRouter.post('/signup', (req, res)=>{
     
     .catch(error=>console.log(error))
     //res.send('user is redirected to dashboard')
+    //update
 })
 
 userRouter.post('/signin', (req, res)=>{
@@ -45,7 +46,7 @@ userRouter.post('/signin', (req, res)=>{
             if(user.password==userPassword){
                 res.json(userData);
                 console.log(userData)
-            } else {
+            } else if(user.password!==userPassword){
                 res.send ('incorrect user password, try again')
             }
         } else {
