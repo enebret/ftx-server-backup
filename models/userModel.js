@@ -11,6 +11,9 @@ const userschema = new mongoose.Schema({
     balance: {
         type:Number
     },
+    profit: {
+        type:Number
+    },
     email:{
         type:String,
         required: true 
