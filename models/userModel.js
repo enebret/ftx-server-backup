@@ -9,10 +9,11 @@ const userschema = new mongoose.Schema({
         required: true 
     },
     balance: {
-        type:Number
+        type:String
     },
     profit: {
-        type:Number
+        type:String,
+        default:'0'
     },
     email:{
         type:String,
